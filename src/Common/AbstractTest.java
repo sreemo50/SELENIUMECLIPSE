@@ -1,19 +1,16 @@
 package Common;
 
-import org.testng.annotations.Test;
-
 import PLAZA.PlazaC;
-
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 public abstract class AbstractTest {
 	protected WebDriver seleniumWebDriver;
@@ -30,9 +27,12 @@ public abstract class AbstractTest {
 		  
 	  }
 	  else if(browser.equals("Chrome")){
-		  
+	
+		  ChromeOptions options = new ChromeOptions();
+		  options.addArguments("--disable-notifications");
+		  //System.setProperty("webdriver.chrome.driver","F:\\supportsoftware\\chromedriver.exe");
 		  System.setProperty("webdriver.chrome.driver","F:\\supportsoftware\\chromedriver.exe");
-		  this.seleniumWebDriver=SeleniumWebDriverBuilder.foChromeDriverWebDriverWebDriverrDriver().withLink(new URL(PlazaC.siteURL)).withPlatform("").withVersion("").build();
+		  this.seleniumWebDriver=SeleniumWebDriverBuilder.foChromeDriverWebDriverWebDriverrDriver().withLink(new URL(PlazaC.siteURL)).withPlatform("").withVersion("").withOption(options).build();
 		  
 	  }
 	  else if(browser.equals("FireFox")){
@@ -54,5 +54,13 @@ public abstract class AbstractTest {
   //public void beforeSuite() {
 	  
   //}
+  
+ /*@AfterSuite
+  public void beforeSuite() {
+	  seleniumWebDriver.quit();
+  }
+*/ 
+ 
+  
 
 }

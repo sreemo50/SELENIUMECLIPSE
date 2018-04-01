@@ -4,6 +4,7 @@ import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -12,6 +13,7 @@ public abstract class SeleniumWebDriverBuilder<SELF,DRIVER extends WebDriver> {
 	protected URL urllink;
 	protected String platform;
 	protected String version;
+	protected ChromeOptions withopt;
 	
 	public static FirefoxDriverWebDriver foFirefoxDriverWebDriverrDriver(){
 		return new FirefoxDriverWebDriver();
@@ -42,7 +44,7 @@ public abstract class SeleniumWebDriverBuilder<SELF,DRIVER extends WebDriver> {
 		public ChromeDriver build()
 		{
 			
-		return new ChromeDriver();
+		return new ChromeDriver(withopt);
 		}
 		
 	}
@@ -74,6 +76,13 @@ public abstract class SeleniumWebDriverBuilder<SELF,DRIVER extends WebDriver> {
 		return (SELF) this;
 		
 	}
+	public SELF withOption(ChromeOptions withOptionset)
+	{
+		this.withopt=withOptionset;
+		return (SELF) this;
+		
+	}
+	
 	
 	
 	public abstract DRIVER build();

@@ -7,6 +7,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 /**
@@ -31,17 +34,20 @@ public  class AbstractPage {
 		System.out.print(alert.getText());
 		alert.accept();
 		
-	}
-	
-	
+	}	
 
 	//for web alert
 	public void WindowsAlertDetails()
 	{
 		Alert alert=driver.switchTo().alert();
-		alert.accept();
-		
+		alert.accept();		
 	}
+	
+	public void MouseOverAndClick(WebElement mouseoverElement)
+	{
+		Actions mouseover=new Actions(driver);
+		Action mo=mouseover.moveToElement(mouseoverElement).build();
+	}	
 	
 
 }

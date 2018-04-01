@@ -1,5 +1,9 @@
 package Page;
 
+import java.util.List;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,12 +27,36 @@ public class EntryPage extends AbstractPage {
 	@FindBy(how=How.CLASS_NAME,using="_1vp5")
 	private WebElement uname;
 	
+	@FindBy(how=How.XPATH,using="//div[@id='userNav']/ul[@class='_bui _3-96']/li")
+	private List<WebElement> NameClick;
+	
+	@FindBy(how=How.XPATH,using="//div[@id='universalNav']/ul[@class='_bui _3-96']/li")
+	private List<WebElement> LinkLeft;
+	
 	
 	public void namecheck(String namest)
 	{
 		System.out.println("come to this namecheck");
 		Assert.assertTrue(uname.getText().equals(namest), "Not fount");
 	}
+	
+	public void NameClick()
+	{	
+		MouseOverAndClick(NameClick.get(0));		
+		NameClick.get(0).click();
+	}
+	
+	public void leftLinkClick()
+	{
+		MouseOverAndClick(LinkLeft.get(0));
+		LinkLeft.get(0).click();
+	}
+	
+	
+	
+	
+	
+	
 	
 	/*public void clickNext()
 	{

@@ -10,8 +10,6 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Common.AbstractPage;
-import Common.PLAZASITE;
-
 
 
 public class HomePage extends AbstractPage {
